@@ -1,0 +1,33 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+An element providing Google IMA SDK functionality
+
+Example:
+
+    <google-ima></google-ima>
+
+@group Google IMA Elements
+@element google-ima
+@demo demo/index.html
+-->
+<dom-module id="google-ima">
+<template>
+ <div id="mainContainer">
+  <div id="content">
+    <video id="contentElement">
+      <template is="dom-repeat" items="{{sources}}">
+        <source src="{{ item.src }}" type="{{ item.type }}">
+        </template>
+      </video>
+    </div>
+    <div id="adContainer"></div>
+  </div>
+  <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+  <script type="text/javascript" src="ads.js"></script>
+</template>
+
+</dom-module>
+
+<script src="google-ima.js">
+</script>

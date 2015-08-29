@@ -1,0 +1,62 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>google-ima Demo</title>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../google-ima.html">
+</head>
+<body unresolved>
+
+  <p>An example of <code>&lt;google-ima&gt;</code>:</p>
+
+  <button id="getcontentbtn">Get Content Video Element</button>
+
+  <google-ima 
+    sources='[{
+      "src": "http://media.streamrail.com/test/hnm.mp4",
+      "type": "video/mp4"
+    }]'
+    adtagurl='http://pubads.g.doubleclick.net/gampad/ads?sz=400x300&iu=%2F6062%2Fiab_vast_samples&ciu_szs=300x250%2C728x90&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]&cust_params=iab_vast_samples%3Dlinear'
+    linearadslotwidth=640
+    linearadslotheight=400
+    nonlinearadslotwidth=640
+    nonlinearadslotheight=150
+    autoplay>
+<h2>Hello google-ima</h2>
+</google-ima>
+
+<script>
+  var googleIma = document.querySelector('google-ima');
+
+  document.querySelector('#getcontentbtn').addEventListener('click', function() {
+    console.log('content element:', googleIma.contentElement());
+  });
+
+  document.addEventListener('google-ima-adsmanager-loaded', function(e) {
+    console.log('google-ima-adsmanager-loaded fired:', e.detail.adsManager);
+  });
+  document.addEventListener('google-ima-ad-event', function(e) {
+    console.log('google-ima-ad-event fired:', e.detail.ad);
+  });
+  document.addEventListener('google-ima-ad-content', function(e) {
+    console.log('google-ima-ad-content fired:', e.detail.type);
+  });
+  document.addEventListener('google-ima-error', function(e) {
+    console.log('google-ima-error fired:', e.detail.error);
+  });
+
+</script>
+
+</body>
+</html>
